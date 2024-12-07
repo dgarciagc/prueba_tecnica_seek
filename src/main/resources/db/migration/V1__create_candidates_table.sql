@@ -23,5 +23,5 @@ CREATE TABLE users (
 );
 
 INSERT INTO users (username, password, role) VALUES
-('admin', '$2a$10$WzP1OQFICaECOvM7uOZO6uXs1EAK0/Sgqfwug2dxCnRYkBZhBBU7y', 'ADMIN'), -- Contraseña: admin123
-('user', '$2a$10$N5xshXoSjfn/yZouO2GKGuewW4ysD4XpWuHhtMIzIqJvSfqjKf/Xm', 'USER'); -- Contraseña: user123
+('admin', '$2a$10$GtvDJVXLkb483Cytpm2iE./zmsA2AZJ2c1WzE7njN7n8yqrJuRS2S', 'ADMIN'), -- Contraseña: 123456
+('user', '$2a$10$GtvDJVXLkb483Cytpm2iE./zmsA2AZJ2c1WzE7njN7n8yqrJuRS2S', 'USER'); -- Contraseña: 123456
