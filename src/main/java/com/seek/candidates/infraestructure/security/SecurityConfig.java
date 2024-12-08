@@ -34,20 +34,24 @@ public class SecurityConfig {
     http.csrf(AbstractHttpConfigurer::disable)
         .cors(cors -> cors.configurationSource(request -> {
           var corsConfiguration = new org.springframework.web.cors.CorsConfiguration();
-          corsConfiguration.setAllowedHeaders(List.of("*"));
+          corsConfiguration.setAllowedOrigins(List.of(
+              "https://pruebatecnicaseek-production.up.railway.app", // Dominio de Railway
+              "http://localhost:8085" // Permitir localhost para pruebas locales
+          ));
           corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
           corsConfiguration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
-          corsConfiguration.setAllowCredentials(true);
+          corsConfiguration.setAllowCredentials(true); // Permitir cookies o autenticación
           return corsConfiguration;
-        })).authorizeHttpRequests(authorizeRequests ->
+        }))
+        .authorizeHttpRequests(authorizeRequests ->
             authorizeRequests
-                .requestMatchers("/auth/**").permitAll() // Permite acceso sin autenticación
+                .requestMatchers("/auth/**").permitAll() // Permitir acceso sin autenticación
                 .requestMatchers(
-                    "/v3/api-docs/**",// Permitir acceso a los JSON de OpenAPI
-                    "/swagger-ui/**",      // Permitir acceso a Swagger UI
-                    "/swagger-ui.html"     // Permitir acceso al archivo Swagger UI
+                    "/v3/api-docs/**",  // Permitir acceso a los JSON de OpenAPI
+                    "/swagger-ui/**",   // Permitir acceso a Swagger UI
+                    "/swagger-ui.html"  // Permitir acceso al archivo Swagger UI
                 ).permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().authenticated() // Requerir autenticación para las demás solicitudes
         )
         .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); // Añadir el filtro JWT
 
