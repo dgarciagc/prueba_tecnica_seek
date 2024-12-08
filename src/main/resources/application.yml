@@ -24,9 +24,8 @@ springdoc:
     path: /swagger-ui.html
   api-docs:
     path: /v3/api-docs
-  urls:
-    - name: API SEEK
-      url: https://pruebatecnicaseek-production.up.railway.app/api/v1/v3/api-docs
+  server-base-url: https://pruebatecnicaseek-production.up.railway.app
+
 
 secretKeyJWT: H77iQbKExiQk9PdZ3fmQB8/1LzOAHc+C9134cHWLgpgxgQkQANciXZ2yS8p6bm4XtLY2ZI/XDgNzRym5V5Fjyg==
 jackson:
