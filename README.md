@@ -33,7 +33,7 @@ Este proyecto es un backend para gestionar información de candidatos en proceso
 
 ### 1. Clonar el Repositorio
 ```bash
-https://github.com/usuario/proyecto-candidatos.git
+https://[github.com/usuario/proyecto-candidatos.git](https://github.com/dgarciagc/prueba_tecnica_seek.git)
 ```
 ### 2. LINK Del Swagger
 ```bash
