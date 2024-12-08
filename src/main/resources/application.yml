@@ -28,10 +28,6 @@ springdoc:
     - name: Railway API
       url: https://pruebatecnicaseek-production.up.railway.app/api/v1/v3/api-docs
 
-
-
-
-
 secretKeyJWT: H77iQbKExiQk9PdZ3fmQB8/1LzOAHc+C9134cHWLgpgxgQkQANciXZ2yS8p6bm4XtLY2ZI/XDgNzRym5V5Fjyg==
 jackson:
   serialization:
