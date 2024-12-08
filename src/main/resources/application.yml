@@ -18,6 +18,15 @@ spring:
   security:
     jwt:
       secret: clave_secreta
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+
+
 secretKeyJWT: H77iQbKExiQk9PdZ3fmQB8/1LzOAHc+C9134cHWLgpgxgQkQANciXZ2yS8p6bm4XtLY2ZI/XDgNzRym5V5Fjyg==
 jackson:
   serialization:
@@ -27,4 +36,7 @@ logging:
   level:
     root: INFO  # Nivel de logging para toda la aplicación
     com.example: DEBUG  # Nivel de logging específico para tu paquete
+    org.springdoc: DEBUG
+    #org.springframework: DEBUG
+
     org.springframework.data.mongodb: DEBUG  # Nivel de logging para Spring Data MongoDB

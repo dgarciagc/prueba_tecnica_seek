@@ -1,5 +1,6 @@
 package com.seek.candidates.domain.model;
 
+import com.seek.candidates.domain.dto.CandidateDto;
 import com.seek.candidates.utils.GenderEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,4 +28,13 @@ public class CandidateModel {
   private GenderEnum gender;
 
   private BigDecimal salaryExpected;
+  public CandidateDto toDto() {
+    CandidateDto candidateModel = new CandidateDto();
+    candidateModel.setId(this.id);
+    candidateModel.setNombre(this.name);
+    candidateModel.setCorreo(this.email);
+    candidateModel.setGenero(this.gender);
+    candidateModel.setSalario(this.salaryExpected);
+    return candidateModel;
+  }
 }

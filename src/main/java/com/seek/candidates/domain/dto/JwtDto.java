@@ -1,6 +1,5 @@
 package com.seek.candidates.domain.dto;
 
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginRequest {
-  private String username;
-  private String password;
+public class JwtDto {
+  private String token;
 }

@@ -1,8 +1,10 @@
 package com.seek.candidates.application.rest;
 
-import com.seek.candidates.domain.dto.JwtResponse;
-import com.seek.candidates.domain.dto.LoginRequest;
+import com.seek.candidates.domain.dto.JwtDto;
+import com.seek.candidates.domain.dto.LoginDto;
 import com.seek.candidates.infraestructure.security.JwtUtils;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -20,9 +22,10 @@ public class AuthController {
     this.authenticationManager = authenticationManager;
     this.jwtUtils = jwtUtils;
   }
-
+  @Operation(summary = "Iniciar sesión", description = "Retorna un json con el token de respuesta")
+  @ApiResponse(responseCode = "200", description = "guardado exitoso")
   @PostMapping("/login")
-  public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+  public ResponseEntity<?> login(@RequestBody LoginDto loginRequest) {
     try {
       Authentication authentication = authenticationManager.authenticate(
           new UsernamePasswordAuthenticationToken(
@@ -31,7 +34,7 @@ public class AuthController {
           )
       );
       String token = jwtUtils.generateToken(authentication.getName());
-      return ResponseEntity.ok(new JwtResponse(token));
+      return ResponseEntity.ok(new JwtDto(token));
     } catch (BadCredentialsException e) {
       System.err.println("Error de credenciales: " + e.getMessage());
       return ResponseEntity.badRequest().body("Credenciales inválidas.");

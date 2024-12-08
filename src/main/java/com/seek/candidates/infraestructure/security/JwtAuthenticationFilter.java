@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
   private final JwtUtils jwtUtils;
@@ -43,5 +44,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
 
     chain.doFilter(request, response);
+  }
+
+  @Override
+  protected boolean shouldNotFilter(HttpServletRequest request) {
+    String path = request.getRequestURI();
+    // Excluyo las rutas de Swagger y OpenAPI del filtro JWT
+    return path.startsWith("/v3/api-docs") || path.startsWith("/swagger-ui");
   }
 }

@@ -40,9 +40,15 @@ public class SecurityConfig {
           corsConfiguration.setAllowCredentials(true);
           return corsConfiguration;
         }))
+
         .authorizeHttpRequests(authorizeRequests ->
             authorizeRequests
                 .requestMatchers("/auth/**").permitAll() // Permite acceso sin autenticación
+                .requestMatchers(
+                    "/v3/api-docs/**",// Permitir acceso a los JSON de OpenAPI
+                    "/swagger-ui/**",      // Permitir acceso a Swagger UI
+                    "/swagger-ui.html"     // Permitir acceso al archivo Swagger UI
+                ).permitAll()
                 .anyRequest().authenticated()
         )
         .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); // Añadir el filtro JWT
