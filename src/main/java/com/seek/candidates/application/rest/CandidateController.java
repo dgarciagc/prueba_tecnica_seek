@@ -166,6 +166,7 @@ public class CandidateController {
           @ApiResponse(responseCode = "500", description = "Error interno del servidor")
       }
   )
+  @DeleteMapping("/{id}")
   public ResponseEntity<ResultResponse<?>> deleteCandidate(@PathVariable Long id) {
     ResultResponse<?> response = new ResultResponse<>();
     response.setSuccess(true);

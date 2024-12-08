@@ -13,5 +13,5 @@ public class ResultResponse<T> {
     private boolean success;
     private String msg;
     private T data;
-    private String numPedido;
+    private String token;
 }
