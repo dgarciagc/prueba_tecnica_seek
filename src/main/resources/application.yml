@@ -24,6 +24,11 @@ springdoc:
     path: /swagger-ui.html
   api-docs:
     path: /v3/api-docs
+  urls:
+    - name: Railway API
+      url: https://pruebatecnicaseek-production.up.railway.app/api/v1/v3/api-docs
+
+
 
 
 

@@ -39,9 +39,7 @@ public class SecurityConfig {
           corsConfiguration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
           corsConfiguration.setAllowCredentials(true);
           return corsConfiguration;
-        }))
-
-        .authorizeHttpRequests(authorizeRequests ->
+        })).authorizeHttpRequests(authorizeRequests ->
             authorizeRequests
                 .requestMatchers("/auth/**").permitAll() // Permite acceso sin autenticación
                 .requestMatchers(
